@@ -134,37 +134,74 @@
         
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
         }
         
         .about-text {
-            font-size: 1.4rem;
-            line-height: 2.0;
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
         }
         
         .about-stats {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 480px) {
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .about-stats {
+                gap: 2rem;
+            }
         }
         
         .stat {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
             background: #000;
             color: #fff;
             border-radius: 10px;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .stat {
+                padding: 2rem;
+            }
         }
         
         .stat h3 {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
         
         .stat p {
             opacity: 0.9;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            line-height: 1.4;
         }
         
         /* Services Section */
@@ -392,25 +429,25 @@
             <h2 class="section-title">회사소개</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 700;">Brand Connect와 함께하는 성장</h3>
-                    <p><strong>브랜드 커넥트</strong>는 브랜드가 글로벌 무대에서 성장할 수 있도록 돕는 전문 마케팅 에이전시입니다.<br><strong>TikTok Shop 광고와 판매 전략</strong>에 특화되어 있으며, 창의적인 아이디어와 데이터 기반 솔루션을 통해 고객의 비즈니스 목표 달성을 지원합니다.</p>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 700; word-break: keep-all;">브랜드를 세계와 연결하는 Brand Connect</h3>
+                    <p style="word-break: keep-all;"><strong>브랜드 커넥트</strong>는 브랜드가 글로벌 무대에서 성장할 수 있도록 돕는 전문 마케팅 에이전시입니다.<br><strong>TikTok Shop 광고와 판매 전략</strong>에 특화되어 있으며, 창의적인 아이디어와 데이터 기반 솔루션을 통해 고객의 비즈니스 목표 달성을 지원합니다.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat">
-                        <h3>$100,000+</h3>
-                        <p>매출 크리에이터</p>
+                        <h3 style="font-size: clamp(1.5rem, 5vw, 2.5rem);">$100,000+</h3>
+                        <p style="word-break: keep-all;">매출 크리에이터 다수 보유</p>
                     </div>
                     <div class="stat">
-                        <h3>10년</h3>
-                        <p>업계 경험</p>
+                        <h3 style="font-size: clamp(1.5rem, 5vw, 2.5rem);">$1,000,000+</h3>
+                        <p style="word-break: keep-all;">월매출 브랜드 협업 경험</p>
                     </div>
                     <div class="stat">
-                        <h3>95%</h3>
-                        <p>고객 만족도</p>
+                        <h3 style="font-size: clamp(1.5rem, 5vw, 2.5rem);">50+</h3>
+                        <p style="word-break: keep-all;">자체 제작 TikTok 교육 영상 보유</p>
                     </div>
                     <div class="stat">
-                        <h3>24/7</h3>
-                        <p>고객 지원</p>
+                        <h3 style="font-size: clamp(1.5rem, 5vw, 2.5rem);">24/7</h3>
+                        <p style="word-break: keep-all;">고객 지원</p>
                     </div>
                 </div>
             </div>
