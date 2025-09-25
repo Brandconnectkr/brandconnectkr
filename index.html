@@ -72,27 +72,30 @@
         
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
+            height: auto;
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, #000 0%, #333 100%);
             color: #fff;
             text-align: center;
-            padding: 60px 0;
+            padding: 100px 0 60px;
         }
         
         .hero-content h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2rem, 8vw, 4.5rem);
             margin-bottom: 1.5rem;
             font-weight: 700;
             letter-spacing: -2px;
             word-break: keep-all;
+            line-height: 1.2;
         }
         
         .hero-content p {
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
             margin-bottom: 2.5rem;
             opacity: 0.9;
+            line-height: 1.4;
         }
         
         .cta-button {
@@ -327,14 +330,8 @@
                 display: none;
             }
             
-            .hero-content h1 {
-                font-size: 2.5rem;
-                line-height: 1.2;
-                padding: 0 20px;
-            }
-            
-            .hero-content p {
-                font-size: 1.4rem;
+            .hero {
+                padding: 80px 0 40px;
             }
             
             .cta-button {
@@ -353,7 +350,7 @@
             }
             
             .section-title {
-                font-size: 2.5rem;
+                font-size: clamp(2rem, 8vw, 2.5rem);
                 margin-bottom: 2rem;
             }
             
@@ -362,17 +359,30 @@
             }
             
             .contact-form {
-                padding: 2rem;
+                padding: 1.5rem;
             }
             
             .container {
                 padding: 0 15px;
             }
-            
+        }
+
+        @media (max-width: 480px) {
             .hero {
-                padding-top: 80px;
-                height: auto;
-                min-height: 100vh;
+                padding: 70px 0 30px;
+            }
+            
+            .marquee span {
+                padding-right: 1em;
+            }
+            
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .stat {
+                padding: 1.5rem 1rem;
+                min-height: 100px;
             }
         }
         
@@ -381,6 +391,64 @@
             scroll-behavior: smooth;
         }
         
+        /* Marquee Styles */
+        .marquee-container {
+            width: 100vw;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 1.5rem;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        .marquee {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-right: 2em;
+            font-size: clamp(1.8rem, 8vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.2;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Prevent horizontal scroll */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .marquee span {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .marquee span {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .marquee span {
+                font-size: 1.8rem;
+            }
+        }
+
         /* Animations */
         .fade-in {
             opacity: 0;
@@ -416,7 +484,12 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>YOUR BRAND,<br>OUR STRATEGY,<br>GLOBAL IMPACT.</h1>
+                <div class="marquee-container">
+                    <div class="marquee">
+                        <span>YOUR BRAND, OUR STRATEGY, GLOBAL IMPACT.</span>
+                        <span>YOUR BRAND, OUR STRATEGY, GLOBAL IMPACT.</span>
+                    </div>
+                </div>
                 <p>브랜드를 성장시키는 마케팅 파트너</p>
                 <a href="#contact" class="cta-button">프로젝트 시작하기</a>
             </div>
@@ -549,6 +622,21 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -595,6 +683,9 @@
         document.querySelectorAll('.service-card, .stat').forEach(el => {
             observer.observe(el);
         });
+
+        // Prevent horizontal scrolling
+        document.body.style.overflowX = 'hidden';
     </script>
 </body>
 </html>
