@@ -503,9 +503,9 @@
 
                     <div class="contact-item">
                         <span>✉️</span>
-                        <div>
+                        <div class="hovered-element">
                             <strong>이메일</strong><br>
-                            sales@brandconnectkr.com
+                            <a href="mailto:sales@brandconnectkr.com" style="color: white;">sales@brandconnectkr.com</a>
                         </div>
                     </div>
 
@@ -513,7 +513,7 @@
                 </div>
                 <div class="contact-form">
                     <h3 style="margin-bottom: 2rem; color: #333; font-weight: 700;">프로젝트 문의하기</h3>
-                    <form>
+                    <form action="https://formspree.io/f/mblzlyky" method="POST">
                         <div class="form-group">
                             <label for="company">회사명</label>
                             <input type="text" id="company" name="company" required>
@@ -574,10 +574,8 @@
         });
 
         // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.querySelector('form').addEventListener('submit', function() {
             alert('문의가 성공적으로 전송되었습니다. 빠른 시일 내에 연락드리겠습니다.');
-            this.reset();
         });
 
         // Add fade-in animation on scroll
